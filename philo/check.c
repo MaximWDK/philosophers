@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:21:38 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 01:50:48 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:42:30 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	ft_check_arg(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
-		if (ft_isdigit(str[i++]) != 0)
+		if (ft_isdigit(str[i]) != 0)
 			return (1);
 	}
 	if (ft_atoi(str) < 0)

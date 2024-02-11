@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:23:03 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 01:52:13 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:59:57 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ struct s_data
 	atomic_int		nb_meals;
 	int				all_ate;
 	atomic_int		dead;
-	pthread_mutex_t	*death;
 	pthread_mutex_t	*write;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
@@ -51,7 +50,7 @@ struct s_data
 
 // main.c
 void	*philo_life(void *philo);
-int		ft_eat(t_philo *philo);
+void	ft_eat(t_philo *philo);
 int		only_one(t_data *data);
 int		wait_threads(t_data *data);
 
@@ -75,9 +74,8 @@ void	ft_print_simple(int id, t_data *data, char *str);
 
 // utils2.c
 time_t	get_time(void);
-int		is_full(t_philo *philo);
 void	philo_dead(t_philo *philo, int dead);
-int		someone_dead(t_data *data);
-int		ft_error(t_data *data, char *str, int ret);
+int		is_full(t_philo *philo);
+int		ft_error(t_data *data, char *str, int type);
 
 #endif

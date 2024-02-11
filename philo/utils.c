@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:20:21 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 01:55:52 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:55:54 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_usleep(time_t time)
 
 void	ft_print_state(t_philo *philo, char *str)
 {
-	if (!someone_dead(philo->data))
+	if (philo->data->dead == 0)
 	{
 		pthread_mutex_lock(philo->data->write);
 		printf("%ld %d %s\n", get_time() - philo->data->start, philo->id, str);

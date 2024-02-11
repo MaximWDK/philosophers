@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:23:06 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 01:46:17 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:50:39 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,30 +45,24 @@ void	*philo_life(void *philo)
 	p = philo;
 	if (p->id % 2 == 0)
 		ft_usleep(100);
-	while (!someone_dead(p->data))
+	while (p->data->dead == 0)
 	{
-		if (!ft_eat(p))
-			break ;
-		if (someone_dead(p->data))
+		ft_eat(p);
+		if (p->data->dead == 1)
 			break ;
 		ft_print_state(p, "is sleeping");
 		ft_usleep(p->data->time_to_sleep);
-		if (someone_dead(p->data))
+		if (p->data->dead == 1)
 			break ;
 		ft_print_state(p, "is thinking");
 	}
 	return (NULL);
 }
 
-int	ft_eat(t_philo *philo)
+void	ft_eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
 	ft_print_state(philo, "has taken a fork");
-	if (philo->data->nb_philos == 1)
-	{
-		pthread_mutex_unlock(philo->left_fork);
-		return (0);
-	}
 	pthread_mutex_lock(philo->right_fork);
 	philo->last_meal = get_time();
 	ft_print_state(philo, "has taken a fork");
@@ -77,7 +71,6 @@ int	ft_eat(t_philo *philo)
 	ft_usleep(philo->data->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
-	return (1);
 }
 
 int	wait_threads(t_data *data)
@@ -97,8 +90,6 @@ int	wait_threads(t_data *data)
 	free(data->forks);
 	free(data->philos);
 	pthread_mutex_destroy(data->write);
-	pthread_mutex_destroy(data->death);
 	free(data->write);
-	free(data->death);
 	return (0);
 }

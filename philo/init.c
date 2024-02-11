@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:23:49 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 01:50:28 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:53:34 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 int	init_all(t_data *data, int argc, char **argv)
 {
 	data->nb_philos = ft_atoi(argv[1]);
-	data->death = NULL;
-	data->write = NULL;
-	data->forks = NULL;
-	data->dead = 0;
 	data->philos = malloc(sizeof(*data->philos) * data->nb_philos);
 	if (!data->philos)
 		return (ft_error(data, "Error: malloc failed\n", 0));
@@ -29,6 +25,7 @@ int	init_all(t_data *data, int argc, char **argv)
 		data->nb_meals = ft_atoi(argv[5]);
 	else
 		data->nb_meals = -1;
+	data->dead = 0;
 	ft_check_data(data, argc);
 	if (init_mutex(data) != 0)
 		return (1);
@@ -43,9 +40,6 @@ int	init_mutex(t_data *data)
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (!data->forks)
 		return (ft_error(data, "Error: malloc failed\n", 0));
-	data->death = malloc(sizeof(pthread_mutex_t));
-	if (!data->death)
-		return (ft_error(data, "Error: malloc failed\n", 0));
 	data->write = malloc(sizeof(pthread_mutex_t));
 	if (!data->write)
 		return (ft_error(data, "Error: malloc failed\n", 0));
@@ -56,8 +50,6 @@ int	init_mutex(t_data *data)
 			return (ft_error(data, "Error: pthread_mutex_init failed\n", i));
 	}
 	if (pthread_mutex_init(data->write, NULL) != 0)
-		return (ft_error(data, "Error: pthread_mutex_init failed\n", i));
-	if (pthread_mutex_init(data->death, NULL) != 0)
 		return (ft_error(data, "Error: pthread_mutex_init failed\n", i));
 	return (0);
 }
