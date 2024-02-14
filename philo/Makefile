@@ -8,7 +8,7 @@ NAME = philo
 OBJ = ${SRC:.c=.o}
 CC = gcc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+CFLAGS = -Wall -Wextra -Werror
 
 .c.o:
 		$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:23:06 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 11:50:39 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/14 14:56:51 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	if (create_threads(&data) != 0)
 		return (3);
 	ft_check_end(&data);
-	if (wait_threads(&data) != 0)
+	if (end_threads(&data) != 0)
 		return (4);
 	return (0);
 }
@@ -73,7 +73,7 @@ void	ft_eat(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 }
 
-int	wait_threads(t_data *data)
+int	end_threads(t_data *data)
 {
 	int	i;
 

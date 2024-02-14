@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:23:03 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 11:59:57 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/12 22:03:34 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ struct s_data
 void	*philo_life(void *philo);
 void	ft_eat(t_philo *philo);
 int		only_one(t_data *data);
-int		wait_threads(t_data *data);
+int		end_threads(t_data *data);
 
 // check.c
 int		ft_check_args(int argc, char **argv);
