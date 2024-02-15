@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:21:38 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 11:42:30 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/15 10:06:41 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_check_data(t_data *data, int argc)
 	{
 		printf("Error: wrong argument(s)\n");
 		exit (1);
-	}	
+	}
 }
 
 void	ft_check_end(t_data *data)
