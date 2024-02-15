@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 17:23:06 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/14 14:56:51 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/15 09:29:37 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	only_one(t_data *data)
 	ft_print_simple(1, data, "has taken a fork");
 	ft_usleep(data->time_to_die);
 	ft_print_simple(1, data, "died");
-	return (0);
+	return (ft_error(data, NULL, data->nb_philos + 2));
 }
 
 void	*philo_life(void *philo)

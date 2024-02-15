@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 01:47:09 by mleonet           #+#    #+#             */
-/*   Updated: 2024/02/11 12:00:08 by mleonet          ###   ########.fr       */
+/*   Updated: 2024/02/15 09:29:50 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_error(t_data *data, char *str, int type)
 		free(data->philos);
 	if (data->write)
 		pthread_mutex_destroy(data->write);
-	printf("%s", str);
+	if (str)
+		printf("%s", str);
 	return (0);
 }
