@@ -52,7 +52,10 @@ int	ft_error(t_data *data, char *str, int type)
 	if (data->philos)
 		free(data->philos);
 	if (data->write)
+	{
 		pthread_mutex_destroy(data->write);
+		free(data->write);
+	}
 	if (str)
 		printf("%s", str);
 	return (0);

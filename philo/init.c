@@ -65,6 +65,7 @@ int	create_threads(t_data *data)
 		data->philos[i].data = data;
 		data->philos[i].last_meal = data->start;
 		data->philos[i].left_fork = &data->forks[i];
+		data->philos[i].has_eaten = 0;
 		if (i == data->nb_philos - 1)
 			data->philos[i].right_fork = &data->forks[0];
 		else

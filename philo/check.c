@@ -38,13 +38,15 @@ int	ft_check_arg(char *str)
 	int	i;
 
 	i = -1;
+	if (str[0] == '0' && !str[1])
+		return (1);
 	while (str[++i])
 	{
 		if (ft_isdigit(str[i]) != 0)
-			return (1);
+			return (2);
 	}
 	if (ft_atoi(str) < 0)
-		return (2);
+		return (3);
 	return (0);
 }
 
